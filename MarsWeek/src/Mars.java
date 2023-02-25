@@ -27,9 +27,10 @@ public class Mars {
         }
 
         landingCheck(9);
-        
+
         new GuessingGame();
         new MarsExpedition();
+        new FindingsList();
     }
 
     public static Boolean landingCheck (int minutesLeft){

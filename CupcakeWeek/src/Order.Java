@@ -131,6 +131,8 @@ public class Order
                 }
             }
             System.out.println("$" + subTotal + "\n");
+            new CreateFile();
+            new WriteToFile(order);
 
         }else{
             System.out.println("Have a nice day then");

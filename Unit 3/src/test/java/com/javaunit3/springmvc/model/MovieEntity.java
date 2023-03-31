@@ -1,11 +1,16 @@
 package com.javaunit3.springmvc.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Table;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 
 @Entity
@@ -24,21 +29,21 @@ public class MovieEntity {
 
     @Column(name="genre")
     private String genre;
-
-    public String getMaturityRating() {
-        return maturityRating;
+    
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "movie id")
+    private List<VoteEntity> votes;
+    public List<VoteEntity> getVotes()
+    {
+        return votes;
     }
-
-    public void setMaturityRating(String maturityRating) {
-        this.maturityRating = maturityRating;
+    public void setVotes(List<VoteEntity> votes)
+    {
+        this.votes = votes;
     }
-
-    public String getGenre() {
-        return genre;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = genre;
+    public void addVotes(VoteEntity vote)
+    {
+        this.votes.add(vote);
     }
 
     public Integer getId() {
@@ -54,7 +59,23 @@ public class MovieEntity {
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        title = title;
+    }
+
+    public String getMaturityRating() {
+        return maturityRating;
+    }
+
+    public void setMaturityRating(String maturityRating) {
+        this.maturityRating = maturityRating;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
 
     
